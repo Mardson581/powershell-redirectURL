@@ -2,10 +2,6 @@
 # and redirects incoming requests to the specified destination URL.
 # It also logs information about the server and incoming connections.
 
-function OnExit {
-    $server.Close()
-}
-
 function Write-Info {
     param ([string] $Message)
 
@@ -24,7 +20,6 @@ $adaptersIP = (Get-NetIPAddress -AddressState Preferred -AddressFamily IPv4 -Int
 
 $server = [System.Net.HttpListener]::new()
 $server.Prefixes.Add("http://+:$($serverPort)/")
-Register-EngineEvent PowerShell.Exiting -Action { OnExit } -SupportEvent
 
 try {
     $server.Start()
