@@ -21,4 +21,5 @@ Um script simples em PowerShell que inicia um servidor HTTP local e redireciona 
 Execute o script pelo PowerShell:
 
 ```powershell
-.\redirect-server.ps1
+.\redirect-server.ps1 # Para iniciar o servidor
+curl "<IP do servidor>:<Porta>/shutdown" # Para encerrar o servidor
